@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kontrol Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dashboard Kontrol Game Hands-Free</h1>
+            <p>Menggunakan MediaPipe Face Mesh & FastAPI</p>
+        </header>
+
+        <main>
+            <div class="video-container">
+                <h2>Live Feed Kamera</h2>
+                <img id="video-feed" src="/video_feed" alt="Video Feed">
+            </div>
+            <div class="info-container">
+                <h2>Informasi Status</h2>
+                <div class="status-box">
+                    <h3>Koneksi Server</h3>
+                    <p id="connection-status" class="status-disconnected">TERPUTUS</p>
+                </div>
+                <div class="status-box">
+                    <h3>Perintah Terdeteksi</h3>
+                    <p id="command-status" class="command-neutral">TENGAH</p>
+                    <p class="detail-info">Koordinat Hidung: <span id="coords-status">(0.50, 0.50)</span></p>
+                    <p class="detail-info">Processing FPS: <span id="fps-status">0</span></p>
+                </div>
+                <div class="status-box">
+                    <h3>Log Perintah</h3>
+                    <ul id="command-log">
+                        <li>Menunggu perintah...</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const status = document.getElementById("connection-status");
+            const commandText = document.getElementById("command-status");
+            const coordsText = document.getElementById("coords-status");
+            const fpsText = document.getElementById("fps-status");
+            const commandLog = document.getElementById("command-log");
+            
+            const ws_protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+            const ws_url = `${ws_protocol}//${window.location.host}/ws_status`;
+
+            const socket = new WebSocket(ws_url);
+            let lastCommand = "TENGAH";
+
+            function addLog(message) {
+                if (commandLog.children.length > 4) {
+                    commandLog.removeChild(commandLog.lastChild);
+                }
+                const newLog = document.createElement("li");
+                const timestamp = new Date().toLocaleTimeString();
+                newLog.innerHTML = `<strong>${message}</strong> <span class="log-time">(${timestamp})</span>`;
+                commandLog.insertBefore(newLog, commandLog.firstChild);
+            }
+
+            socket.onopen = function(event) {
+                status.textContent = "TERHUBUNG";
+                status.className = "status-connected";
+                commandLog.innerHTML = ""; // Bersihkan log awal
+            };
+
+            socket.onmessage = function(event) {
+                // Parse data JSON yang diterima dari server
+                const data = JSON.parse(event.data);
+                const command = data.command;
+                const coords = data.coords;
+                const fps = data.fps;
+
+                // Update teks di dasbor
+                commandText.textContent = command;
+                commandText.className = `command-${command.toLowerCase()}`;
+                coordsText.textContent = `(${coords.x.toFixed(2)}, ${coords.y.toFixed(2)})`;
+                fpsText.textContent = fps;
+
+                // Tambahkan ke log jika perintah berubah dan bukan TENGAH
+                if (command !== lastCommand && command !== "TENGAH") {
+                    addLog(command);
+                }
+                lastCommand = command;
+            };
+
+            socket.onclose = function(event) {
+                status.textContent = "TERPUTUS";
+                status.className = "status-disconnected";
+            };
+            
+            socket.onerror = function(error) {
+                status.textContent = "ERROR";
+                status.className = "status-disconnected";
+            }
+        });
+    </script>
+</body>
+</html>
