@@ -1,0 +1,20 @@
+TUGAS BESAR PENGOLAHAN CITRA DIGITAL
+Program Studi D3 Teknik Informatika - Kelas 2A
+Tahun Ajaran 2024/2025
+
+------------------------------------------------------------
+ANGGOTA KELOMPOK 
+
+No  Nama Lengkap                          NIM
+--  -------------------------------- -------------
+1   Geraldin Gysrawa                  231511012
+2   Ikhsan Zuhri Al Ghifary           231511015
+3   Muhammad Harish Al-Rasyidi        231511021
+
+-------------------------------------------------------
+
+Topik: "KONTROL GAME SUBWAY SURFERS MENGGUNAKAN DETEKSI GERAKAN KEPALA DENGAN MEDIAPIPE"
+
+------------------------------------------------------------
+
+Link Presentasi Youtube: 
