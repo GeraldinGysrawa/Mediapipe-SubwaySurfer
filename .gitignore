@@ -245,3 +245,6 @@ cython_debug/
 # Temporary files
 *.tmp
 *.temp
+
+head_gestures/
+models/
