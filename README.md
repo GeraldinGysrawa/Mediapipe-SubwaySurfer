@@ -2,21 +2,21 @@
 
 ## Deskripsi Proyek
 
-[cite_start]Proyek ini adalah sebuah sistem inovatif yang memungkinkan pengguna untuk memainkan game **Subway Surfers** menggunakan gerakan kepala sebagai input kontrol, memberikan pengalaman bermain yang *hands-free* dan interaktif. Sistem ini memanfaatkan computer vision secara *real-time* untuk mendeteksi gestur kepala dan menerjemahkannya menjadi perintah dalam game.
+Proyek ini adalah sebuah sistem inovatif yang memungkinkan pengguna untuk memainkan game **Subway Surfers** menggunakan gerakan kepala sebagai input kontrol, memberikan pengalaman bermain yang *hands-free* dan interaktif. Sistem ini memanfaatkan computer vision secara *real-time* untuk mendeteksi gestur kepala dan menerjemahkannya menjadi perintah dalam game.
 
 [cite_start]Proyek ini dikembangkan sebagai bagian dari mata kuliah Pengolahan Citra Digital (PCD) di Politeknik Negeri Bandung.
 
 ## Fitur Utama
 
-* [cite_start]**Deteksi Wajah Real-Time**: Menggunakan MediaPipe Face Mesh untuk mendeteksi 478 *landmark* wajah dari input webcam secara *real-time*.
-* [cite_start]**Ekstraksi Pose Kepala**: Mengekstraksi orientasi kepala dalam tiga sumbu (Yaw, Pitch, Roll) sebagai fitur utama.
-* [cite_start]**Klasifikasi Gestur Berbasis Machine Learning**: Menggunakan model Support Vector Machine (SVM) untuk mengklasifikasikan lima gestur kepala: **Kiri, Kanan, Lompat, Menunduk, dan Netral**.
-* [cite_start]**Kontrol Game Hands-Free**: Menerjemahkan prediksi gestur menjadi perintah penekanan tombol keyboard virtual (`up`, `down`, `left`, `right`) untuk mengontrol karakter game.
-* [cite_start]**Antarmuka Interaktif**: Dibangun dengan Streamlit untuk memudahkan pengumpulan data, pelatihan model, dan menjalankan demo aplikasi.
+* **Deteksi Wajah Real-Time**: Menggunakan MediaPipe Face Mesh untuk mendeteksi 478 *landmark* wajah dari input webcam secara *real-time*.
+* **Ekstraksi Pose Kepala**: Mengekstraksi orientasi kepala dalam tiga sumbu (Yaw, Pitch, Roll) sebagai fitur utama.
+* **Klasifikasi Gestur Berbasis Machine Learning**: Menggunakan model Support Vector Machine (SVM) untuk mengklasifikasikan lima gestur kepala: **Kiri, Kanan, Lompat, Menunduk, dan Netral**.
+* **Kontrol Game Hands-Free**: Menerjemahkan prediksi gestur menjadi perintah penekanan tombol keyboard virtual (`up`, `down`, `left`, `right`) untuk mengontrol karakter game.
+* **Antarmuka Interaktif**: Dibangun dengan Streamlit untuk memudahkan pengumpulan data, pelatihan model, dan menjalankan demo aplikasi.
 
 ## Teknologi yang Digunakan
 
-[cite_start]Berikut adalah daftar library utama yang digunakan dalam proyek ini:
+Berikut adalah daftar library utama yang digunakan dalam proyek ini:
 
 * **OpenCV**: Untuk akuisisi dan pemrosesan gambar dari webcam.
 * **MediaPipe**: Untuk deteksi *landmark* wajah.
@@ -107,6 +107,6 @@ Jika Anda ingin membuat model yang terkalibrasi dengan gerakan kepala Anda sendi
 
 Proyek ini disusun oleh mahasiswa Jurusan Teknik Komputer dan Informatika, Politeknik Negeri Bandung:
 
-* [cite_start]**Geraldin Gysrawa** - 231511011 
-* [cite_start]**Ikhsan Zuhri Al Ghifary** - 231511015 
-* [cite_start]**Muhammad Harish Al-Rasyidi** - 231511020
+* **Geraldin Gysrawa** - 231511011 
+* **Ikhsan Zuhri Al Ghifary** - 231511015 
+* **Muhammad Harish Al-Rasyidi** - 231511020
